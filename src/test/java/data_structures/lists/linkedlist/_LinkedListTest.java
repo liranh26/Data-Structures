@@ -54,6 +54,30 @@ class _LinkedListTest {
 		assertTrue(list.tail.equals(node));
 	}
 	
-	
+	@Test
+	void removeNode() {
+		list.add(head);
+		assertTrue(list.head.equals(head));
+		assertTrue(list.tail.equals(head));
+		
+		assertNull(list.head.next);
+		assertNull(list.tail.next);
+		
+		list.remove(head);
+		assertTrue(list.isEmpty());
+		
+		LinkedListNode<Integer> node2= new LinkedListNode<>(4);
+		LinkedListNode<Integer> node3= new LinkedListNode<>(7);
+		list.add(head);
+		list.add(node2);
+		list.add(node3);
+		
+		list.remove(head);
+		assertFalse(list.isEmpty());
+
+		assertTrue(list.head.equals(node2));
+		assertTrue(list.tail.equals(node3));
+
+	}
 
 }
