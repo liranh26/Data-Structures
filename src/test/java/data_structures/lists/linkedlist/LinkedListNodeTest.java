@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 class LinkedListNodeTest {
 	
 	
-	
 	@Test
 	void newLinkedListNode() {
 		LinkedListNode<Integer> node = new LinkedListNode<Integer>();
