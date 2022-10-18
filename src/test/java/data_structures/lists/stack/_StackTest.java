@@ -25,7 +25,7 @@ class _StackTest {
 	
 	@Test
 	void newStack() {
-		_Stack<Integer> stack = new _Stack(number);
+		_Stack<Integer> stack = new _Stack<Integer>(number);
 		assertNotNull(stack);
 		assertNotNull(stack.top);
 		assertTrue(stack.top.equals(node));
