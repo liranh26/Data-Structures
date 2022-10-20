@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
+import java.util.Stack;
 
 public class DirectGraph<T> {
 	public Map<GraphNode<T>, List<GraphNode<T>>> nodes;
@@ -34,31 +35,12 @@ public class DirectGraph<T> {
 		}
 	}
 	
-	public boolean hasIsland() {
-		Queue<GraphNode<T>> queue = new LinkedList<>();
-		List<GraphNode<T>> keys = nodes.keySet().stream().toList();
-		Set<GraphNode<T>> visited = new HashSet<>(); //handle cyclic case
-		
-		queue.add(keys.get(0));
-		
-		while(!queue.isEmpty()) {
-			GraphNode<T> curr = queue.poll(); 
-			visited.add(curr);
-			
-			for (GraphNode<T> n : nodes.get(curr)) {
-				if(!visited.contains(n))
-					queue.add(n);
-			}
-		}
-		
-		return visited.size() != keys.size();
-	}
 	
 	public boolean hasPathBFS(GraphNode<T> start, GraphNode<T> node) {
-		Queue<GraphNode<T>> queue = new LinkedList<>();
-		Set<GraphNode<T>> visited = new HashSet<>(); //handle cyclic case
-		
 		if(start == null || node == null) throw new NullPointerException();
+		
+		Queue<GraphNode<T>> queue = new LinkedList<>();
+		Set<GraphNode<T>> visited = new HashSet<>(); //handle cyclic case		
 		
 		queue.add(start);
 		
@@ -69,10 +51,32 @@ public class DirectGraph<T> {
 			if(curr.equals(node))
 				return true;
 			
-			for (GraphNode<T> n : nodes.get(curr)) {
+			for (GraphNode<T> n : nodes.get(curr)) 
 				if(!visited.contains(n))
 					queue.add(n);
-			}
+			
+		}
+		
+		return false;
+	}
+	
+	public boolean hasPathDFS(GraphNode<T> start, GraphNode<T> node) {
+		if(start == null || node == null) throw new NullPointerException();
+		
+		Stack<GraphNode<T>> stack = new Stack<>();
+		Set<GraphNode<T>> visited = new HashSet<>();
+				
+		stack.push(start);
+		
+		while(!stack.isEmpty()) {
+			GraphNode<T> curr = stack.pop();
+			visited.add(curr);
+			
+			if(curr.equals(node)) return true;
+			
+			for (GraphNode<T> n : curr.children) 
+				if(!visited.contains(n))
+					stack.push(n);
 		}
 		
 		return false;

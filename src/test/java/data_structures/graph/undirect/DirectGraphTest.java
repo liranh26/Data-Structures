@@ -95,4 +95,28 @@ class DirectGraphTest {
 			assertTrue(e instanceof NullPointerException);
 		}
 	}
+
+	@Test
+	void hasPathDFSTest() {
+		GraphNode<Character> a = nodes.get(0);
+		GraphNode<Character> b = nodes.get(1);
+		GraphNode<Character> c = nodes.get(2);
+		
+		graph.connectNodes(a, b); //a->b
+		assertTrue(graph.hasPathBFS(a,b));
+		
+		graph.connectNodes(b, a); //b->a
+		assertTrue(graph.hasPathBFS(b,a));
+		
+		graph.connectNodes(b,c);
+		assertTrue(graph.hasPathBFS(a,c)); //a -> b -> c
+		assertFalse(graph.hasPathBFS(c,b));
+
+		try {
+			graph.hasPathBFS(a, null);
+			fail();
+		}catch (NullPointerException e) {
+			assertTrue(e instanceof NullPointerException);
+		}
+	}
 }
