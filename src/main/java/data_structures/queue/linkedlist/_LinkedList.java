@@ -1,4 +1,4 @@
-package data_structures.lists.linkedlist;
+package data_structures.queue.linkedlist;
 
 public class _LinkedList<T> {
 	

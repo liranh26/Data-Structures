@@ -1,4 +1,4 @@
-package data_structures.lists.linkedlist;
+package data_structures.queue.linkedlist;
 
 import java.util.Objects;
 

@@ -35,7 +35,6 @@ public class DirectGraph<T> {
 		}
 	}
 	
-	
 	public boolean hasPathBFS(GraphNode<T> start, GraphNode<T> node) {
 		if(start == null || node == null) throw new NullPointerException();
 		
@@ -81,5 +80,8 @@ public class DirectGraph<T> {
 		
 		return false;
 	}
+
+
+	
 	
 }

@@ -18,7 +18,8 @@ class DirectGraphTest {
 		graph = new DirectGraph<>();
 		nodes = Arrays.asList(new GraphNode<>('a'),
 								new GraphNode<>('b'),
-								new GraphNode<>('c'));
+								new GraphNode<>('c'),
+								new GraphNode<>('d'));
 	}
 
 	@Test
@@ -27,7 +28,6 @@ class DirectGraphTest {
 		assertNotNull(graph.nodes);
 	}
 
-	
 	@Test
 	void connectNodesTest() {
 		GraphNode<Character> a = nodes.get(0);
@@ -119,4 +119,5 @@ class DirectGraphTest {
 			assertTrue(e instanceof NullPointerException);
 		}
 	}
+
 }
